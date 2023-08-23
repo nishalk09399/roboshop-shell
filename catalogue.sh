@@ -39,13 +39,13 @@ VALIDATE $? "installing node js"
 # this command will defentectly fail 
 # To improve : first we need to check weather the user is aleread y exist or not, if not we need to create the user
 
-useradd roboshop &>>$LOGFILE
+# useradd roboshop &>>$LOGFILE
 
 
-#write a condition to check directory already exist or not.
-mkdir /app &>>$LOGFILE
+# #write a condition to check directory already exist or not.
+# mkdir /app &>>$LOGFILE
 
-VALIDATE $? "creating folder app"
+# VALIDATE $? "creating folder app"
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
