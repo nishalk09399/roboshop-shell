@@ -34,18 +34,20 @@ VALIDATE $? "Installing redis repo"
 
 yum module enable redis:remi-6.2 -y &>>$LOGFILE
 
-VALIDATE $? "Installing redis repo"
+VALIDATE $? "enabling redis 6.2"
 
 yum install redis -y &>>$LOGFILE
 
-VALIDATE $? "Installing redis repo"
+VALIDATE $? "Installing redis 6.2"
 
 sed -i 's/127.0.0.1/0.0.0.0/g'  /etc/redis.conf /etc/redis.conf &>>$LOGFILE
 
-VALIDATE $? "Installing redis repo"
+VALIDATE $? "Allowing remote connection to redis"
 
 systemctl enable redis &>>$LOGFILE
 
-VALIDATE $? "Installing redis repo"
+VALIDATE $? "enable redis"
 
 systemctl start redis &>>$LOGFILE
+
+VALIDATE $? "start redis"
