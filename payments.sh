@@ -33,35 +33,35 @@ yum install python36 gcc python3-devel -y &>>$LOGFILE
 VALIDATE $? "installing python"
 
 
-useradd roboshop &>>$LOGFILE
+# useradd roboshop &>>$LOGFILE
 
-VALIDATE $? "useradd roboshop"
+# VALIDATE $? "useradd roboshop"
 
-mkdir /app  &>>$LOGFILE
+# mkdir /app  &>>$LOGFILE
 
-VALIDATE $? "move to app directory"
+# VALIDATE $? "move to app directory"
 
-curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip &>>$LOGFILE
+# curl -L -o /tmp/payment.zip https://roboshop-builds.s3.amazonaws.com/payment.zip &>>$LOGFILE
 
-VALIDATE $? "downloading payment artifacts"
-
-
-cd /app &>>$LOGFILE
-
-VALIDATE $? "changing directory to app"
+# VALIDATE $? "downloading payment artifacts"
 
 
-unzip /tmp/payment.zip &>>$LOGFILE
+# cd /app &>>$LOGFILE
 
-VALIDATE $? "unzipping the payment file"
+# VALIDATE $? "changing directory to app"
 
-cd /app &>>$LOGFILE
 
-VALIDATE $? "changing directory to app"
+# unzip /tmp/payment.zip &>>$LOGFILE
 
-pip3.6 install -r requirements.txt &>>$LOGFILE
+# VALIDATE $? "unzipping the payment file"
 
-VALIDATE $? "installing python 6"
+# cd /app &>>$LOGFILE
+
+# VALIDATE $? "changing directory to app"
+
+# pip3.6 install -r requirements.txt &>>$LOGFILE
+
+# VALIDATE $? "installing python 6"
 
 cp /root/roboshop-shell/payments.service  /etc/systemd/system/payments.service &>>$LOGFILE
 
