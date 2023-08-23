@@ -71,11 +71,11 @@ systemctl daemon-reload &>>$LOGFILE
 
 VALIDATE $? "demon reload"
 
-systemctl enable payment  &>>$LOGFILE
+systemctl enable payments  &>>$LOGFILE
 
-VALIDATE $? "enable payment"
+VALIDATE $? "enable payments"
 
-systemctl start payment &>>$LOGFILE
+systemctl start payments &>>$LOGFILE
 
-VALIDATE $? "start payment"
+VALIDATE $? "start payments"
 
