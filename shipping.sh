@@ -32,9 +32,9 @@ yum install maven -y &>>$LOGFILE
 
 VALIDATE $? "install maven"
 
-useradd roboshop &>>$LOGFILE
+# useradd roboshop &>>$LOGFILE
 
-VALIDATE $? "add roboshop"
+# VALIDATE $? "add roboshop"
 
 mkdir /app &>>$LOGFILE
 
