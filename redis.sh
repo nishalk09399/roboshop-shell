@@ -40,7 +40,7 @@ yum install redis -y &>>$LOGFILE
 
 VALIDATE $? "Installing redis 6.2"
 
-sed -i 's/127.0.0.1/0.0.0.0/g'  /etc/redis.conf /etc/redis.conf &>>$LOGFILE
+sed -i 's/127.0.0.1/0.0.0.0/g'  /etc/redis.conf /etc/redis/redis.conf &>>$LOGFILE
 
 VALIDATE $? "Allowing remote connection to redis"
 
