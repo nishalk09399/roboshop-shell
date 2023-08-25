@@ -36,7 +36,7 @@ then
 else
     echo -e "$G...USER roboshop is already present so skipping now.$N"
  fi
- 
+
 #checking the user app directory
 VALIDATE_APP_DIR=$(cd /app)
 if [ $? -ne 0 ];
@@ -65,7 +65,7 @@ useradd roboshop &>>$LOGFILE
 #write a condition to check directory already exist or not
 mkdir /app &>>$LOGFILE
 
-curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
+curl -o /tmp/catalogue.zip https://roboshop-artifacts.s3.amazonaws.com/catalogue.zip &>>$LOGFILE
 
 VALIDATE $? "downloading catalogue artifact"
 
