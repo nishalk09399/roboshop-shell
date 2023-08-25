@@ -48,7 +48,7 @@ rm -rf /usr/share/nginx/html/* &>>$LOGFILE
 VALIDATE $? "removing default html content in nginx"
 
 
-curl -o /tmp/web.zip https://roboshop-builds.s3.amazonaws.com/web.zip &>>$LOGFILE
+curl -o /tmp/web.zip https://roboshop-artifacts.s3.amazonaws.com/frontend.zip &>>$LOGFILE
 
 VALIDATE $? "downloading roboshop artifact"
 
