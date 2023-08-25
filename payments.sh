@@ -52,13 +52,13 @@ yum install python36 gcc python3-devel -y &>>$LOGFILE
 VALIDATE $? "installing python"
 
 
-useradd roboshop &>>$LOGFILE
+# useradd roboshop &>>$LOGFILE
 
-VALIDATE $? "useradd roboshop"
+# VALIDATE $? "useradd roboshop"
 
-mkdir /app  &>>$LOGFILE
+# mkdir /app  &>>$LOGFILE
 
-VALIDATE $? "move to app directory"
+# VALIDATE $? "move to app directory"
 
 curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment.zip &>>$LOGFILE
 
