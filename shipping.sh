@@ -61,7 +61,7 @@ VALIDATE $? "install maven"
 
 # VALIDATE $? "create app directory"
 
-curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>>$LOGFILE
+curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip &>>$LOGFILE
 
 VALIDATE $? "download the shipping artcifact"
 
