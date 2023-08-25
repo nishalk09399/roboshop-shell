@@ -27,18 +27,39 @@ VALIDATE(){
     fi
 }
 
+USER_ROBOSHOP=$(id roboshop)
+if [ $? -ne 0 ];
+then
+    echo -e "$Y...USER roboshop is not present so creating now..$N"
+    useradd roboshop &>>$LOGFILE
+else
+    echo -e "$G...USER roboshop is already present so skipping now.$N"
+ fi
+
+#checking the user app directory
+VALIDATE_APP_DIR=$(cd /app)
+if [ $? -ne 0 ];
+then
+    echo -e " $Y /app directory not there so creating now $N"
+    mkdir /app &>>$LOGFILE  
+else
+    echo -e "$G /app directory already present so skipping now $N"
+    fi
+
+    
+
 
 yum install maven -y &>>$LOGFILE
 
-VALIDATE $? "install maven"
+ VALIDATE $? "install maven"
 
-# useradd roboshop &>>$LOGFILE
+ useradd roboshop &>>$LOGFILE
 
-# VALIDATE $? "add roboshop"
+ VALIDATE $? "add roboshop"
 
-# mkdir /app &>>$LOGFILE
+ mkdir /app &>>$LOGFILE
 
-# VALIDATE $? "create app directory"
+ VALIDATE $? "create app directory"
 
 
 curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>>$LOGFILE
@@ -46,9 +67,9 @@ curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.z
 VALIDATE $? "download the shipping artcifact"
 
 
-# cd /app &>>$LOGFILE
+ cd /app &>>$LOGFILE
 
-# VALIDATE $? "move to app directory"
+ VALIDATE $? "move to app directory"
 
 
 unzip /tmp/shipping.zip &>>$LOGFILE
