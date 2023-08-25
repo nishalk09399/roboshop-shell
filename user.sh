@@ -27,6 +27,26 @@ VALIDATE(){
     fi
 }
 
+
+USER_ROBOSHOP=$(id roboshop)
+if [ $? -ne 0 ];
+then
+    echo -e "$Y...USER roboshop is not present so creating now..$N"
+    useradd roboshop &>>$LOGFILE
+else
+    echo -e "$G...USER roboshop is already present so skipping now.$N"
+ fi
+
+#checking the user app directory
+VALIDATE_APP_DIR=$(cd /app)
+if [ $? -ne 0 ];
+then
+    echo -e " $Y /app directory not there so creating now $N"
+    mkdir /app &>>$LOGFILE  
+else
+    echo -e "$G /app directory already present so skipping now $N"
+    fi
+
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>$LOGFILE
 
 VALIDATE $? "Setting up NPM Source"
@@ -41,7 +61,7 @@ useradd roboshop &>>$LOGFILE
 #write a condition to check directory already exist or not
 mkdir /app &>>$LOGFILE
 
-curl -o /tmp/user.zip https://roboshop-builds.s3.amazonaws.com/user.zip &>>$LOGFILE
+curl -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user.zip &>>$LOGFILE
 
 VALIDATE $? "downloading user artifact"
 
