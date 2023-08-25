@@ -82,7 +82,7 @@ pip3.6 install -r requirements.txt &>>$LOGFILE
 
 VALIDATE $? "installing python 6"
 
-cp /root/roboshop-shell/payments.service  /etc/systemd/system/payment.service &>>$LOGFILE
+cp /root/roboshop-shell/payments.service  /etc/systemd/system/payments.service &>>$LOGFILE
 
 VALIDATE $? "copying file to system location"
 
@@ -90,11 +90,11 @@ systemctl daemon-reload &>>$LOGFILE
 
 VALIDATE $? "demon reload"
 
-systemctl enable payment  &>>$LOGFILE
+systemctl enable payments  &>>$LOGFILE
 
-VALIDATE $? "enable payment"
+VALIDATE $? "enable payments"
 
-systemctl start payment &>>$LOGFILE
+systemctl start payments &>>$LOGFILE
 
-VALIDATE $? "start payment"
+VALIDATE $? "start payments"
 
