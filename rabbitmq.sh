@@ -28,6 +28,9 @@ VALIDATE(){
 }
 
 
+
+
+
 curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash &>>LOGFILE
 
 VALIDATE $? "downloading rabbitmq packages"
@@ -52,4 +55,6 @@ VALIDATE $? "start rabbitmq"
 rabbitmqctl add_user roboshop roboshop123 &>>LOGFILE
 
 VALIDATE $? "adding user roboshop"
+
+rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" 
 
