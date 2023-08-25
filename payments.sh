@@ -70,7 +70,7 @@ cd /app &>>$LOGFILE
 VALIDATE $? "changing directory to app"
 
 
-unzip /tmp/payment.zip &>>$LOGFILE
+unzip -o /tmp/payment.zip &>>$LOGFILE
 
 VALIDATE $? "unzipping the payment file"
 
