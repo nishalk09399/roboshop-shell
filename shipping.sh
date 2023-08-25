@@ -57,9 +57,9 @@ VALIDATE $? "install maven"
 
 # VALIDATE $? "add roboshop"
 
-mkdir /app &>>$LOGFILE
+# mkdir /app &>>$LOGFILE
 
-VALIDATE $? "create app directory"
+# VALIDATE $? "create app directory"
 
 curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>>$LOGFILE
 
