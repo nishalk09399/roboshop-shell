@@ -51,46 +51,39 @@ else
 
 yum install maven -y &>>$LOGFILE
 
- VALIDATE $? "install maven"
+VALIDATE $? "install maven"
 
- useradd roboshop &>>$LOGFILE
+useradd roboshop &>>$LOGFILE
 
- VALIDATE $? "add roboshop"
+VALIDATE $? "add roboshop"
 
- mkdir /app &>>$LOGFILE
+mkdir /app &>>$LOGFILE
 
- VALIDATE $? "create app directory"
-
+VALIDATE $? "create app directory"
 
 curl -L -o /tmp/shipping.zip https://roboshop-builds.s3.amazonaws.com/shipping.zip &>>$LOGFILE
 
 VALIDATE $? "download the shipping artcifact"
 
+cd /app &>>$LOGFILE
 
- cd /app &>>$LOGFILE
-
- VALIDATE $? "move to app directory"
-
+VALIDATE $? "move to app directory"
 
 unzip /tmp/shipping.zip &>>$LOGFILE
 
 VALIDATE $? "unzipping the shipping file"
 
-
 cd /app &>>$LOGFILE
 
 VALIDATE $? "move to app directory"
-
 
 mvn clean package &>>$LOGFILE
 
 VALIDATE $? "clean maven"
 
-
 mv target/shipping-1.0.jar shipping.jar &>>$LOGFILE
 
 VALIDATE $? "move the shipping file"
-
 
 cp /root/roboshop-shell/shipping.service  /etc/systemd/system/shipping.service &>>$LOGFILE
 
@@ -100,26 +93,21 @@ systemctl daemon-reload &>>$LOGFILE
 
 VALIDATE $? "demon reload"
 
-
 systemctl enable shipping &>>$LOGFILE
 
 VALIDATE $? "enable shipping"
-
 
 systemctl start shipping &>>$LOGFILE
 
 VALIDATE $? "start the shipping"
 
-
 yum install mysql -y &>>$LOGFILE
 
 VALIDATE $? "install mysql"
 
-
 mysql -h mysql.nishaldevops.online -uroot -pRoboShop@1 < /app/schema/shipping.sql &>>$LOGFILE
 
 VALIDATE $? "install mysql artifacts"
-
 
 systemctl restart shipping &>>$LOGFILE
 
